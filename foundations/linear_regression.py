@@ -1,0 +1,13 @@
+import numpy as np
+from numpy.typing import NDArray
+
+class Solution:
+
+    def get_model_prediction(self, X: NDArray[np.float64], weights: NDArray[np.float64]) -> NDArray[np.float64]:
+        model_prediction=np.round(np.dot(X, weights), 5)
+        return model_prediction
+
+    def get_error(self, model_prediction: NDArray[np.float64], ground_truth: NDArray[np.float64]) -> float:
+        n= len(model_prediction)
+        MSE= np.sum((model_prediction-ground_truth)**2)/n
+        return np.round(MSE, 5)
